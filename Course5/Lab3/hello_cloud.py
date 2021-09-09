@@ -43,10 +43,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 
 def main(argv):
-    port = DEFAULT_PORT
-    if len(argv) > 1:
-        port = int(argv[1])
-
+    port = int(argv[1]) if len(argv) > 1 else DEFAULT_PORT
     web_server = socketserver.TCPServer(('', port), Handler)
     print("Listening for connections on port {}".format(port))
     web_server.serve_forever()
